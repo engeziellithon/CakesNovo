@@ -17,8 +17,7 @@ namespace Cakes.Api.Extensions
         public static void AddDataService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt =>
-                    opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection"), opt =>
-                opt.MigrationsAssembly("Cakes.Data")));
+                    opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<ProductRepository>();
             services.AddTransient<ProductCategoryRepository>();

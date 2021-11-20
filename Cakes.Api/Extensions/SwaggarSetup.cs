@@ -36,11 +36,11 @@ namespace Cakes.Api.Extensions
         public static void UseSwaggerDocumentation(this IApplicationBuilder app, IWebHostEnvironment environment)
         {
             // Configure the HTTP request pipeline.
-            if (environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            //if (environment.IsDevelopment())
+            //{
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            //}
         }
     }
 }

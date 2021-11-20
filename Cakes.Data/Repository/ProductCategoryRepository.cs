@@ -1,6 +1,7 @@
 ﻿using Cakes.Data.Context;
+using Cakes.Data.DTO;
 using Cakes.Domain.Entity;
-using System.Threading.Tasks;
+using Cakes.Domain.Helpers;
 
 namespace Cakes.Data.Repository
 {
@@ -11,6 +12,11 @@ namespace Cakes.Data.Repository
         public async Task Save(ProductCategory productCategory)
         {
             await AddAsync(productCategory);
+        }
+
+        public async Task<Pagination> GetAll()
+        {
+            return await GetAllSelect(c => new ProductCategoryDTO { Id = c.Id, Name = c.Name });
         }
     }
 }

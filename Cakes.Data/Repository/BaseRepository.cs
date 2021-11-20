@@ -43,6 +43,34 @@ namespace Cakes.Data.Repository
             };
         }
 
+        public virtual async Task<Pagination> GetAllSelect<BEntity>
+        (
+            Expression<Func<TEntity, BEntity>> select,
+            bool asNoTracking = true,
+            int skip = 0,
+            int take = 20
+        ) where BEntity : class
+        {
+            var databaseCount = await DbSet.CountAsync().ConfigureAwait(false);
+            if (asNoTracking)
+                return new Pagination
+                {
+                    Take = take,
+                    Skip = skip,
+                    Data = await DbSet.AsNoTracking().Select(select).Skip(skip).Take(take).ToListAsync().ConfigureAwait(false),
+                    Total = databaseCount
+                };
+
+            return new Pagination
+            {
+                Take = take,
+                Skip = skip,
+                Data = await DbSet.Select(select).Skip(skip).Take(take).ToListAsync().ConfigureAwait(false),
+                Total = databaseCount
+            };
+        }
+
+
         public virtual async Task<TEntity?> GetById
         (
             Guid entity
