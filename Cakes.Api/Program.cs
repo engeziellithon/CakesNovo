@@ -1,32 +1,30 @@
-using Cakes.Api.Extensions;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-builder.Services.AddElmahSetup(builder.Configuration);
-builder.Services.AddSwaggerSetup();
-builder.Services.AddServicesSetup(builder.Configuration);
-builder.Services.AddJwtSetup(builder.Configuration);
+//builder.Services.AddElmahSetup(builder.Configuration);
+//builder.Services.AddSwaggerSetup();
+//builder.Services.AddServicesSetup(builder.Configuration);
+//builder.Services.AddJwtSetup(builder.Configuration);
 
-builder.Services.AddResponseCompression();
+//builder.Services.AddResponseCompression();
 
 var app = builder.Build();
 
-app.UseResponseCompression();
-app.UseStaticFiles();
+//app.UseResponseCompression();
+//app.UseStaticFiles();
 
-app.UseSwaggerDocumentation(app.Environment);
+//app.UseSwaggerDocumentation(app.Environment);
 
 app.UseHttpsRedirection();
 
 
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseElmahSetup();
+//app.UseElmahSetup();
 
 app.Run();
