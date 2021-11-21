@@ -23,8 +23,4 @@
     <ProjectReference Include="..\Cakes.Data\Cakes.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModel\ProductCategory\" />
-  </ItemGroup>
-
 </Project>

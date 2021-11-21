@@ -46,6 +46,7 @@ namespace Cakes.Data.Repository
         public virtual async Task<Pagination> GetAllSelect<BEntity>
         (
             Expression<Func<TEntity, BEntity>> select,
+            Expression<Func<TEntity, bool>> where,
             bool asNoTracking = true,
             int skip = 0,
             int take = 20
@@ -57,7 +58,7 @@ namespace Cakes.Data.Repository
                 {
                     Take = take,
                     Skip = skip,
-                    Data = await DbSet.AsNoTracking().Select(select).Skip(skip).Take(take).ToListAsync().ConfigureAwait(false),
+                    Data = await DbSet.AsNoTracking().Where(where).Select(select).Skip(skip).Take(take).ToListAsync().ConfigureAwait(false),
                     Total = databaseCount
                 };
 
@@ -65,7 +66,7 @@ namespace Cakes.Data.Repository
             {
                 Take = take,
                 Skip = skip,
-                Data = await DbSet.Select(select).Skip(skip).Take(take).ToListAsync().ConfigureAwait(false),
+                Data = await DbSet.Where(where).Select(select).Skip(skip).Take(take).ToListAsync().ConfigureAwait(false),
                 Total = databaseCount
             };
         }

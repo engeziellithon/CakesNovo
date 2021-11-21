@@ -11,6 +11,7 @@ namespace Cakes.Data.Context
 
         }
 
+
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductCategory> ProductsCategory { get; set; }
         public DbSet<Customer> Customer { get; set; }
