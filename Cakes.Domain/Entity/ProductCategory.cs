@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Cakes.Domain.Entity
+﻿namespace Cakes.Domain.Entity
 {
     public class ProductCategory : BaseEntity
     {
@@ -14,7 +12,7 @@ namespace Cakes.Domain.Entity
 
         public string Name { get; set; }
         public bool Active { get; private set; }
-        [JsonIgnore]
+        public string ImageUrl { get; set; }
         public List<Product> Product { get; set; }
     }
 }

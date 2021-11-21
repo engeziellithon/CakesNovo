@@ -16,7 +16,7 @@ namespace Cakes.Data.Repository
 
         public async Task<Pagination> GetAll(int skip, int take)
         {
-            return await GetAllSelect(c => new ProductCategoryDTO { Id = c.Id, Name = c.Name }, c => c.Active, false, skip, take);
+            return await GetAllSelect(c => new ProductCategoryDTO { Id = c.Id, Name = c.Name, ImageUrl = c.ImageUrl }, c => c.Active, false, skip, take);
         }
     }
 }
